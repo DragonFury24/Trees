@@ -123,10 +123,10 @@ public class Tree {
     }
 
     private TreeNode maxNode(TreeNode root) {
-        if (root.getRight() == null)
+        if (root.getLeft() == null)
             return root;
 
-        return maxNode(root.getRight());
+        return maxNode(root.getLeft());
     }
 
 
