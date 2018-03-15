@@ -39,21 +39,21 @@ public class Tree {
         if (root == null)
             return null;
 
-        if (root.getValue().compareTo(x) > 0) {
+        if (root.getValue().compareTo(x) > 0) { //x is less than value of root, move to left side of tree
             root.setLeft(removeHelper(root.getLeft(), x));
         }
-        else if (root.getValue().compareTo(x) < 0) {
+        else if (root.getValue().compareTo(x) < 0) { //x is greater than value of root, move to right side of tree
             root.setRight(removeHelper(root.getRight(), x));
         }
         else if (root.getValue().compareTo(x) == 0) {
-            if (isLeaf(root)) {
+            if (isLeaf(root)) { //root has no children; just set it to null
                 root = null;
-            } else if (oneKid(root)) {
+            } else if (oneKid(root)) {  //root has 1 child; set it to that child
                 if (root.getLeft() != null)
                     root = root.getLeft();
                 else if (root.getRight() != null)
                     root = root.getRight();
-            } else {
+            } else { //root has 2 children; find the last node of the tree; copy value of the last node into root; delete that last node
                 TreeNode temp = maxNode(root.getLeft());
                 root.setValue(temp.getValue());
                 root.setLeft(removeHelper(root.getLeft(), temp.getValue()));
